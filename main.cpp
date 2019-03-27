@@ -4,8 +4,9 @@
 #include <boost/asio.hpp>
 #include <boost/thread/thread.hpp>
 
-#include <signal.h>
 #include "./term.h"
+
+#include <signal.h>
 #include <iostream>
 #include <string>
 #include <stdlib.h>
@@ -88,7 +89,7 @@ class remoteEndpoint{
             string tmp=rep.substr(idx+1, rep.length()-1);
             this->rmPort=boost::lexical_cast<int>(tmp);
         }
-
+  
         ~remoteEndpoint(){}
 
         int traverser(){
