@@ -15,6 +15,6 @@ add_compile_options(-std=c++11)
 
 add_executable(MaskashTerminal main.cpp)
 
-target_link_libraries(MaskashTerminal ${Boost_LIBRARIES})
+target_link_libraries(MaskashTerminal ${Boost_LIBRARIES} pthread boost_system)
 
 
