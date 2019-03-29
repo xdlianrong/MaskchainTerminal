@@ -17,6 +17,11 @@
 #include <chrono>
 #include <condition_variable>
 
+#define MAX_LENGTH 254
+
+#include <ifaddrs.h>
+#include <arpa/inet.h>
+
 using namespace msk;
 using namespace boost::asio;
 using namespace std;
@@ -32,6 +37,41 @@ unsigned const c_lineWidth = 160;
 FILE *fp1 = NULL;
 
 string default_account;
+
+std::string exec(const char* cmd);
+
+string get_ip()
+{
+    char ipAddr[MAX_LENGTH];
+
+    std::string ip; 
+
+    ipAddr[0] = '\0';
+
+    struct ifaddrs * ifAddrStruct = NULL;
+    void * tmpAddrPtr = NULL;
+
+    if (getifaddrs(&ifAddrStruct) != 0)
+    {
+        return NULL;
+    }
+
+    struct ifaddrs * iter = ifAddrStruct;
+
+    while (iter != NULL) {
+        if (iter->ifa_addr->sa_family == AF_INET) { //if ip4
+            // is a valid IP4 Address
+            tmpAddrPtr = &((struct sockaddr_in *)iter->ifa_addr)->sin_addr;
+            char addressBuffer[INET_ADDRSTRLEN];
+            inet_ntop(AF_INET, tmpAddrPtr, addressBuffer, INET_ADDRSTRLEN);
+            ip = addressBuffer;
+        }
+        iter = iter->ifa_next;
+    }
+    freeifaddrs(ifAddrStruct);
+
+    return ip+":30303";
+}
 
 class communication{
     public:
@@ -65,10 +105,16 @@ void communication::workLoop(){
 void  communication::doWork(){
     char recv_buff[1024]={0};
     sock.receive_from(buffer(recv_buff,1024),send_ep);
-    fp1 = fopen("transaction_history.txt","a+");
-    fputs(recv_buff,fp1);
-    memset(recv_buff,'\0',1024);
-    fclose(fp1);
+    if(recv_buff[0] == 'e'){
+        string parama_tmp = recv_buff;
+        string tmp = "curl -X POST -s http://127.0.0.1:8545 --data '{\"jsonrpc\":\"2.0\",\"method\":\"admin_addPeer\",\"params\":[\""+parama_tmp+"\"],\"id\":\"1\"}'";
+        exec(tmp.data());
+    }else{
+        fp1 = fopen("transaction_history.txt","a+");
+        fputs(recv_buff,fp1);
+        memset(recv_buff,'\0',1024);
+        fclose(fp1);
+    }    
 }
 
 class remoteEndpoint{
@@ -255,6 +301,14 @@ int main(int argc, char** argv) {
 
     std::cout << "控制台启动完成" << "\n\n";
     std::string command = "\n";
+
+    std::cout<<"节点连接中.........."<<endl;
+    this_thread::sleep_for(std::chrono::seconds(1));
+    string add_node_command = "curl -X POST -s "+rep+" --data '{\"jsonrpc\":\"2.0\",\"method\":\"admin_nodeInfo\",\"params\":[""],\"id\":\"1\"}'";
+   
+    string node_info = exec(add_node_command.data());
+    node_info = node_info.substr(node_info.rfind("enode"),137)+get_ip();
+    sock.send_to(buffer(node_info),send_ep);
 
     for(; ; ) {
         std::cout << "> ";
