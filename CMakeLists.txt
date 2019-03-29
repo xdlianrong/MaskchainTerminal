@@ -11,7 +11,7 @@ include_directories(${Boost_INCLUDE_DIRS})
 message("${Boost_INCLUDE_DIRS}")
 message("${Boost_LIBRARIES}")
 
-add_compile_options(-std=c++11)
+add_compile_options(-std=c++11 -g)
 
 add_executable(MaskashTerminal main.cpp)
 

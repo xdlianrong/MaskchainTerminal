@@ -25,10 +25,10 @@ boost/asio.hpp
 -
 boost/thread/thread.hpp
 -
-./term.h
-/home/marscat/mskT/MaskashTerminal/./term.h
 signal.h
 -
+./term.h
+/home/marscat/mskT/MaskashTerminal/./term.h
 iostream
 -
 string

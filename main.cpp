@@ -30,8 +30,8 @@ ip::udp::endpoint send_ep2;
 unsigned const c_lineWidth = 160;
 
 FILE *fp1 = NULL;
-FILE *fp2 = NULL;
-FILE *fp3 = NULL;
+
+string default_account;
 
 class communication{
     public:
@@ -65,8 +65,7 @@ void communication::workLoop(){
 void  communication::doWork(){
     char recv_buff[1024]={0};
     sock.receive_from(buffer(recv_buff,1024),send_ep);
-    fp1 = fopen("file1.txt","a+");
-    cout<<"open file1.txt"<<recv_buff<<endl;
+    fp1 = fopen("transaction_history.txt","a+");
     fputs(recv_buff,fp1);
     memset(recv_buff,'\0',1024);
     fclose(fp1);
@@ -113,10 +112,12 @@ std::string exec(const char* cmd) {
 	if (!pipe) return "ERROR";
 	char buffer[128];
 	std::string result = "";
+    this_thread::sleep_for(std::chrono::seconds(2));
 	while(!feof(pipe)) {
 		if(fgets(buffer, 128, pipe) != NULL)
 		result += buffer;
 	}
+    fflush(stdout);  
 	pclose(pipe);
 	return result;
 }
@@ -133,8 +134,33 @@ public:
     {}
 
     void sendCommand(std::string _command) {
-        std::cout<<exec(this->commandMaker(_command).data())<<std::endl<<std::endl;
-        this->commandCounter++;
+       if(_command.substr(0,_command.find("(")) == "personal_newAccount"){//setting default account to unlock easily later
+            string tmp = exec(this->commandMaker(_command).data());
+            
+            tmp = exec(this->commandMaker("net_version()").data());
+            cout<<tmp<<endl<<endl;
+            default_account = tmp.substr(tmp.rfind("result")+9,tmp.find_last_of('\"')-tmp.rfind("result")-10);    
+            this->commandCounter++;    
+        }else if(_command.substr(0,_command.find("(")) == "eth_sendTransaction"){
+            string pass_word;
+            string receiver;
+
+            cout<<"please input your password:";
+            cin>>pass_word;
+
+            string tmp = "personal_unlockAccount("+default_account+","+pass_word+","+"1000)";
+            string tmp_ = exec(this->commandMaker(tmp).data());
+            tmp_ = exec(this->commandMaker("net_version()").data());
+            this->commandCounter++;
+
+            exec(this->commandMaker(_command).data());
+            cout<<exec(this->commandMaker("net_version()").data())<<endl<<endl;
+            this->commandCounter++;
+        }else{
+            exec(this->commandMaker(_command).data());
+            cout<<exec(this->commandMaker("net_version()").data())<<endl<<endl;
+            this->commandCounter++;
+        }
     }
 
     std::string commandMaker(std::string _command) {
@@ -234,13 +260,13 @@ int main(int argc, char** argv) {
         std::cout << "> ";
         std::cin >> command;
         if(command!="q") {
-            std::cout << "Maskash返回值：\n ";
             ch.sendCommand(command);
         } else {
             std::cout << "\n退出控制台\n";
             break;
         }
     }
+
     net_.join();
 
     return 0;
