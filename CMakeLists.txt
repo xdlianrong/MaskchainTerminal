@@ -13,7 +13,7 @@ message("${Boost_LIBRARIES}")
 
 add_compile_options(-std=c++11 -g)
 
-add_executable(MaskashTerminal main.cpp)
+add_executable(MaskashTerminal terminal.cpp)
 
 target_link_libraries(MaskashTerminal ${Boost_LIBRARIES} pthread boost_system)
 

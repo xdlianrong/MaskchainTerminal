@@ -1,1 +1,1 @@
-/usr/bin/c++    -rdynamic CMakeFiles/MaskashTerminal.dir/main.cpp.o  -o MaskashTerminal -Wl,-rpath,/usr/local/lib /usr/local/lib/libboost_program_options.so -lpthread -lboost_system 
+/usr/bin/c++    -rdynamic CMakeFiles/MaskashTerminal.dir/terminal.cpp.o  -o MaskashTerminal -Wl,-rpath,/usr/local/lib /usr/local/lib/libboost_program_options.so -lpthread -lboost_system 

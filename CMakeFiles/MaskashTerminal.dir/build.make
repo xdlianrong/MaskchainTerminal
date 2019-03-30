@@ -57,27 +57,27 @@ include CMakeFiles/MaskashTerminal.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/MaskashTerminal.dir/flags.make
 
-CMakeFiles/MaskashTerminal.dir/main.cpp.o: CMakeFiles/MaskashTerminal.dir/flags.make
-CMakeFiles/MaskashTerminal.dir/main.cpp.o: main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marscat/mskT/MaskashTerminal/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/MaskashTerminal.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MaskashTerminal.dir/main.cpp.o -c /home/marscat/mskT/MaskashTerminal/main.cpp
+CMakeFiles/MaskashTerminal.dir/terminal.cpp.o: CMakeFiles/MaskashTerminal.dir/flags.make
+CMakeFiles/MaskashTerminal.dir/terminal.cpp.o: terminal.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/marscat/mskT/MaskashTerminal/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/MaskashTerminal.dir/terminal.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MaskashTerminal.dir/terminal.cpp.o -c /home/marscat/mskT/MaskashTerminal/terminal.cpp
 
-CMakeFiles/MaskashTerminal.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MaskashTerminal.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/marscat/mskT/MaskashTerminal/main.cpp > CMakeFiles/MaskashTerminal.dir/main.cpp.i
+CMakeFiles/MaskashTerminal.dir/terminal.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MaskashTerminal.dir/terminal.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/marscat/mskT/MaskashTerminal/terminal.cpp > CMakeFiles/MaskashTerminal.dir/terminal.cpp.i
 
-CMakeFiles/MaskashTerminal.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MaskashTerminal.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/marscat/mskT/MaskashTerminal/main.cpp -o CMakeFiles/MaskashTerminal.dir/main.cpp.s
+CMakeFiles/MaskashTerminal.dir/terminal.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MaskashTerminal.dir/terminal.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/marscat/mskT/MaskashTerminal/terminal.cpp -o CMakeFiles/MaskashTerminal.dir/terminal.cpp.s
 
 # Object files for target MaskashTerminal
 MaskashTerminal_OBJECTS = \
-"CMakeFiles/MaskashTerminal.dir/main.cpp.o"
+"CMakeFiles/MaskashTerminal.dir/terminal.cpp.o"
 
 # External object files for target MaskashTerminal
 MaskashTerminal_EXTERNAL_OBJECTS =
 
-MaskashTerminal: CMakeFiles/MaskashTerminal.dir/main.cpp.o
+MaskashTerminal: CMakeFiles/MaskashTerminal.dir/terminal.cpp.o
 MaskashTerminal: CMakeFiles/MaskashTerminal.dir/build.make
 MaskashTerminal: /usr/local/lib/libboost_program_options.so
 MaskashTerminal: CMakeFiles/MaskashTerminal.dir/link.txt

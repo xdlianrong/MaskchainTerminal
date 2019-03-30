@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/MaskashTerminal.dir/main.cpp.o"
+  "CMakeFiles/MaskashTerminal.dir/terminal.cpp.o"
   "MaskashTerminal.pdb"
   "MaskashTerminal"
 )

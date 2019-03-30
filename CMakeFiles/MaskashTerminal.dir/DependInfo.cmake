@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/marscat/mskT/MaskashTerminal/main.cpp" "/home/marscat/mskT/MaskashTerminal/CMakeFiles/MaskashTerminal.dir/main.cpp.o"
+  "/home/marscat/mskT/MaskashTerminal/terminal.cpp" "/home/marscat/mskT/MaskashTerminal/CMakeFiles/MaskashTerminal.dir/terminal.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

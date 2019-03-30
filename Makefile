@@ -123,32 +123,32 @@ MaskashTerminal/fast:
 	$(MAKE) -f CMakeFiles/MaskashTerminal.dir/build.make CMakeFiles/MaskashTerminal.dir/build
 .PHONY : MaskashTerminal/fast
 
-main.o: main.cpp.o
+terminal.o: terminal.cpp.o
 
-.PHONY : main.o
+.PHONY : terminal.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/MaskashTerminal.dir/build.make CMakeFiles/MaskashTerminal.dir/main.cpp.o
-.PHONY : main.cpp.o
+terminal.cpp.o:
+	$(MAKE) -f CMakeFiles/MaskashTerminal.dir/build.make CMakeFiles/MaskashTerminal.dir/terminal.cpp.o
+.PHONY : terminal.cpp.o
 
-main.i: main.cpp.i
+terminal.i: terminal.cpp.i
 
-.PHONY : main.i
+.PHONY : terminal.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/MaskashTerminal.dir/build.make CMakeFiles/MaskashTerminal.dir/main.cpp.i
-.PHONY : main.cpp.i
+terminal.cpp.i:
+	$(MAKE) -f CMakeFiles/MaskashTerminal.dir/build.make CMakeFiles/MaskashTerminal.dir/terminal.cpp.i
+.PHONY : terminal.cpp.i
 
-main.s: main.cpp.s
+terminal.s: terminal.cpp.s
 
-.PHONY : main.s
+.PHONY : terminal.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/MaskashTerminal.dir/build.make CMakeFiles/MaskashTerminal.dir/main.cpp.s
-.PHONY : main.cpp.s
+terminal.cpp.s:
+	$(MAKE) -f CMakeFiles/MaskashTerminal.dir/build.make CMakeFiles/MaskashTerminal.dir/terminal.cpp.s
+.PHONY : terminal.cpp.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... MaskashTerminal"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... terminal.o"
+	@echo "... terminal.i"
+	@echo "... terminal.s"
 .PHONY : help
 
 
